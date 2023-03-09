@@ -8,7 +8,7 @@ SELECT * FROM albums;
 -- the primary key is id
 
 -- What does the column named 'name' represent?
--- it represents the song names
+-- it represents the song or album names
 
 -- What do you think the sales column represents?
 -- how many millions of albums or cd's were sold
@@ -60,4 +60,4 @@ where sales < 20.0;
 'Nevermind','16.7'
 'The Wall','17.6'
 */
-
+use albums_db;
