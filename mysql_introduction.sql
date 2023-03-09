@@ -1,4 +1,5 @@
-SELECT * FROM mysql.user;
-SELECT user, host FROM mysql.user;
-SELECT * FROM mysql.help_topic;
-SELECT help_topic_id, help_category_id, url FROM mysql.help_topic;
+CREATE TABLE quotes (
+    author_first_name VARCHAR(50),
+    author_last_name  VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL
+);
