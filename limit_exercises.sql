@@ -24,4 +24,14 @@ and hire_date like '%12-25'
 limit 5
 offset 50;
 
+/* MySQL provides a way to return only unique results from our queries with the keyword DISTINCT. 
+For example, to find all the unique titles within the company, we could run the following query:*/
+-- List the first 10 distinct last name sorted in descending order. 
+
+select distinct last_name from employees
+order by last_name desc
+limit 10;
+
+
+
 
