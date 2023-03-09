@@ -5,14 +5,15 @@ Find the first 5 employees hired in the 90's by sorting by hire date and limitin
 results to the first 5 records. Write a comment in your code that lists the five names of the employees returned.*/
 select first_name, last_name from employees
 where hire_date between '1990-01-01' and '1999-12-31'
-and hire_date like '%12-25'
+and birth_date like '%12-25'
 limit 5;
 
-/* 'Yinghua','Dredge'
-'Stepehn','Hardjono'
-'Tiina','Speek'
-'Udi','Zastre'
-'Guiseppe','Baez'
+/* 'Mang','Erie'
+'Evgueni','Srimani'
+'Florina','Garnier'
+'Sorina','Kermarrec'
+'Chriss','Binding'
+
 */
 
 
@@ -20,9 +21,9 @@ limit 5;
 The five after that would be your second page, etc. Update the query to find the tenth page of results.*/
 select first_name, last_name from employees
 where hire_date between '1990-01-01' and '1999-12-31'
-and hire_date like '%12-25'
+and birth_date like '%12-25'
 limit 5
-offset 50;
+offset 45;
 
 /* MySQL provides a way to return only unique results from our queries with the keyword DISTINCT. 
 For example, to find all the unique titles within the company, we could run the following query:*/
@@ -31,7 +32,11 @@ For example, to find all the unique titles within the company, we could run the 
 select distinct last_name from employees
 order by last_name desc
 limit 10;
-
+/*LIMIT and OFFSET can be used to create multiple pages of data. 
+What is the relationship between OFFSET (number of results to skip), LIMIT (number of results per page), 
+and the page number?
+*/
+-- (number of results per page * number of pages) -result of one page
 
 
 
