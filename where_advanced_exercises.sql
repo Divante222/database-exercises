@@ -34,8 +34,44 @@ select distinct last_name from employees
 where last_name like 'E%';
 
 -- Find all unique last names that start or end with 'E'
-select last_name from employees
+select distinct last_name from employees
 where last_name like 'E%'
 or last_name like '%e';
 
 -- 6 Find all unique last names that end with E, but does not start with E?
+select distinct last_name from employees 
+where last_name like '%e';
+
+-- Find all unique last names that start and end with 'E'.
+select distinct last_name from employees
+where last_name like 'E%'
+and last_name like '%e';
+
+-- ########Find all current or previous employees hired in the 90s. Enter a comment with top three employee numbers.
+select * from employees
+where hire_date > '1990-01-01' 
+and hire_date < '1999-12-31'
+limit 3;
+
+-- 9 Find all current or previous employees born on Christmas. Enter a comment with top three employee numbers.
+select * from employees 
+where birth_date like '%12-25'
+;
+-- Danel, Chikara, Mang
+ 
+ -- Find all current or previous employees hired in the 90s and born on Christmas. 
+ -- Enter a comment with top three employee numbers.
+ select * from employees
+ where hire_date between '1990-01-01' and '1999-12-31'
+ and birth_date like '%12-25'
+ limit 3;
+ -- mang, Evgueni, Florina
+ 
+ -- Find all unique last names that have a 'q' in their last name.
+ select distinct last_name from employees 
+ where last_name like '%q%';
+ 
+ -- Find all unique last names that have a 'q' in their last name but not 'qu'.
+ select distinct last_name from employees
+ where last_name like '%q%'
+ and last_name not like '%qu%';
