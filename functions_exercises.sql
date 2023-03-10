@@ -7,13 +7,13 @@ show tables;
 Use concat() to combine their first and last name together as a single column named full_name.
 */
 
-select concat(first_name, ' ' , last_name)
+select concat(first_name, ' ' , last_name) as 'full_name'
 from employees
 where last_name like 'e%e';
 
 -- Convert the names produced in your last query to all uppercase.
 
-select upper(concat(first_name, ' ' , last_name))
+select upper(concat(first_name, ' ' , last_name))as 'full_name'
 from employees
 where last_name like 'e%e';
 
