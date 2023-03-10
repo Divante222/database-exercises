@@ -59,7 +59,7 @@ group by username;
 times a username shows up? Bonus: How many duplicate usernames are there from your previous query?
 */
 
--- 13251 duplicate usernames are in the previous query
+-- 13251 duplicate usernames are in the previous querygi
 select concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
 substr(birth_date, 3, 2) 
 ) as username, count(*)
@@ -96,6 +96,7 @@ The query result should show 9 rows, one for each department and the employee co
 */ 
 select * from dept_emp;
 select dept_no, count(*) from dept_emp
+where to_date > now()
 group by dept_no;
 
 /* Determine how many different salaries each employee has had. This includes both historic and current.*/
