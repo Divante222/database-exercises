@@ -103,7 +103,8 @@ group by dept_no;
 select * from salaries;
 
 select emp_no, round(avg(salary), 2), count(*) from salaries
-group by emp_no;
+group by emp_no
+order by count(*) desc;
 
 -- Find the maximum salary for each employee.
 select emp_no, max(salary), round(avg(salary), 2), count(*) from salaries
@@ -113,7 +114,7 @@ group by emp_no;
 select emp_no, min(salary), round(avg(salary), 2), count(*) from salaries
 group by emp_no;
 
--- Now find the max salary for each employee where that max salary is greater than $150,000.
+-- Now find the max salarygi for each employee where that max salary is greater than $150,000.
 select emp_no, max(salary), round(avg(salary), 2), count(*) from salaries
 group by emp_no
 having max(salary) > 150000;
