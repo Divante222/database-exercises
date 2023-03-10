@@ -121,4 +121,7 @@ group by emp_no
 having avg(salary) between 80000 and 90000;
 
 -- Find the standard deviation of salaries for each employee.
+select emp_no, round(STDDEV(salary),2) , avg(salary), count(*) from salaries
+group by emp_no
+;
 
