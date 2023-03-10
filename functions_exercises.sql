@@ -32,6 +32,12 @@ and birth_date like '%12-25';
 -- Find the smallest and largest current salary from the salaries table.
 show tables;
 select min(salary), max(salary) from salaries;
+-- got the answer but this was a trick question it wanted the current salaries
+-- look for the 9999 year entries to find current salaries
+-- the answer
+select min(salary), max(salary) from salaries
+where to_date > now()
+;
 
 /* Use your knowledge of built in SQL functions to generate a username for all of the employees. 
 A username should be all lowercase, and consist of the first character of the employees first name, 
