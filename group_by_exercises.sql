@@ -58,6 +58,8 @@ group by username;
 /* 9 From your previous query, are there any duplicate usernames? What is the higest number of 
 times a username shows up? Bonus: How many duplicate usernames are there from your previous query?
 */
+
+-- 13251 duplicate usernames are in the previous query
 select concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
 substr(birth_date, 3, 2) 
 ) as username, count(*)
@@ -65,14 +67,14 @@ from employees
 group by username
 ;
 
-select concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
+select count(*) from (select concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
 substr(birth_date, 3, 2) 
 ) as username, count(*)
 from employees
 group by username
-having count(*) > 5;
+having count(*) > 1)as derived_table;
 
-select count(dist) from (
+select * from (
 select concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
 substr(birth_date, 3, 2) 
 ) as username , count(*) as dist
