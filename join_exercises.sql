@@ -123,22 +123,7 @@ and departments.dept_name = 'Marketing'
 and salaries.to_date like '999%'
 group by employees.first_name, employees.last_name
 order by max(salaries.salary) desc;
-
--- gou birnbaum 133516
-
-select * from departments;
-select * from dept_manager;
-select * from titles;
-select * from salaries;
-select * from employees;
-select * from dept_emp;
-
-
-
-
-
-
-
+--  Akemi      | Warwick
 
 -- Which current department manager has the highest salary?
 select max(salaries.salary),employees.first_name, employees.last_name ,departments.dept_name from employees
@@ -147,6 +132,7 @@ join departments on dept_manager.dept_no = departments.dept_no
 join salaries on employees.emp_no = salaries.emp_no
 where dept_manager.to_date like '999%'
 group by employees.first_name, employees.last_name, departments.dept_name
+order by max(salaries.salary)
 ;
 
 -- '106491', 'Vishwani', 'Minakawa'
@@ -156,11 +142,30 @@ select departments.dept_name, round(avg(salaries.salary),2) as average_salary fr
 join salaries on employees.emp_no = salaries.emp_no
 join dept_emp on employees.emp_no = dept_emp.emp_no
 join departments on dept_emp.dept_no = departments.dept_no
-
 group by departments.dept_name;
 
+
+-- Bonus Find the names of all current employees, their department name, and their current manager's name.
+select * from employees
+join dept_emp on employees.emp_no = dept_emp.emp_no
+join departments on dept_emp.dept_no = departments.dept_no
+join dept_manager on employees.emp_no = dept_manager.emp_no
+where dept_emp.to_date like '999%'
+and dept_manager.to_date like '999%';
+
+-- Bonus Who is the highest paid employee within each department.
+select employees.first_name , max(salary) from employees
+join dept_emp on employees.emp_no = dept_emp.emp_no
+join departments on dept_emp.dept_no = departments.dept_no
+join dept_manager on employees.emp_no = dept_manager.emp_no
+join salaries on employees.emp_no = salaries.emp_no
+where dept_emp.to_date like '999%'
+and salaries.to_date like '999%'
+group by employees.first_name
+;
+
 select * from departments;
-select* from dept_manager;
+select * from dept_manager;
 select * from titles;
 select * from salaries;
 select * from employees;
