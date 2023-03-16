@@ -34,20 +34,15 @@ join employees on dept_emp.emp_no = employees.emp_no
 order by employees.emp_no
 ;
 -- How many employees (current or previous) were born in each decade?
-select employees.emp_no, dept_emp.dept_no, employees.first_name, employees.last_name, employees.hire_date, dept_emp.to_date, employees.birth_date,
-	case
-		when employees.birth_date like '195%' then 'Born in the 50s'
-		when employees.birth_date like '196%' then 'Born in the 60s'
-		when employees.birth_date like '197%' then 'Born in the 70s'
-		when employees.birth_date like '198%' then 'Born in the 80s'
-        when employees.birth_date like '199%' then 'Born in the 90s'
-        when employees.birth_date like '200%' then 'Born in the early 2000s'
-	end 'Decade born in'
-from dept_emp
-join departments on dept_emp.dept_no = departments.dept_no
-join employees on dept_emp.emp_no = employees.emp_no
-order by employees.emp_no;
+select count(*),
+	case 
+		when birth_date like '195%' then '50s'
+        when birth_date like '196%' then '60s'
+	end as birth_decade
+from employees
+group by birth_decade;
 
+select * from employees;
 
 /*
 What is the current average salary for each of the following department groups: 
