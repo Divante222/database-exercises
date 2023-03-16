@@ -67,7 +67,7 @@ where birth_date like '%12-25'
  and birth_date like '%12-25'
  order by emp_no
  limit 3;
- -- 10261, 10438, 10681
+ -- 1
  
  -- Find all unique last names that have a 'q' in their last name.
  select distinct last_name from employees 
