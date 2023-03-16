@@ -31,10 +31,12 @@ and birth_date like '%12-25';
 
 -- Find the smallest and largest current salary from the salaries table.
 show tables;
-select min(salary), max(salary) from salaries;
--- got the answer but this was a trick question it wanted the current salaries
--- look for the 9999 year entries to find current salaries
--- the answer
+select * from salaries;
+select min(salary), max(salary) from salaries
+where to_date like '999%';
+-- min 38623, max 158220
+
+
 select min(salary), max(salary) from salaries
 where to_date > now()
 ;
