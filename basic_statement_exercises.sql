@@ -5,13 +5,14 @@ use albums_db;
 
 -- What is the primary key for the albums table?
 SELECT * FROM albums;
+show create table albums;
 -- the primary key is id
 
 -- What does the column named 'name' represent?
--- it represents the song or album names
+-- it represents the album names
 
 -- What do you think the sales column represents?
--- how many millions of albums or cd's were sold
+-- how many millions of albums sold
 
 -- Find the name of all albums by Pink Floyd.
 select * from albums
@@ -28,7 +29,7 @@ where name = 'Nevermind';
 -- Grunge, Alternative rock
 
 -- Which albums were released in the 1990s?
-select name from albums
+select name, release_date from albums
 where release_date between 1990 and 1999;
 /* 'The Bodyguard'
 'Jagged Little Pill'
@@ -43,8 +44,8 @@ where release_date between 1990 and 1999;
 'Supernatural'
 */
 
--- Which albums had less than 20 million certified sales?
-select name, sales from albums
+-- Which albums had less than 20 million certified sales? Rename this column as low_selling_albums.
+select name as low_selling_albums, sales from albums
 where sales < 20.0;
 /* 'Grease: The Original Soundtrack from the Motion Picture','14.4'
 'Bad','19.3'
