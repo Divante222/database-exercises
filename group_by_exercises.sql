@@ -28,14 +28,28 @@ Include those names in a comment in your sql code.*/
 
 select last_name from employees
 group by last_name
-having last_name like '%q%' and last_name not like '%qu%';
+having last_name like '%q%' 
+	and last_name not like '%qu%';
+
+/*
+'Chleq'
+'Lindqvist'
+'Qiwen'
+*/
 
 /* 6 Add a COUNT() to your results (the query above) to 
 find the number of employees with the same last name.*/ 
 
 select last_name , count(*) from employees
 group by last_name
-having last_name like '%q%' and last_name not like '%qu%';
+having last_name like '%q%' 
+and last_name not like '%qu%';
+/*
+'Chleq', '189'
+'Lindqvist', '190'
+'Qiwen', '168'
+*/
+
 
 /* 7 Find all all employees with first names 'Irena', 'Vidya', or 'Maya'. 
 Use COUNT(*) and GROUP BY to find the number of employees for each gender with those names.
@@ -44,16 +58,33 @@ Use COUNT(*) and GROUP BY to find the number of employees for each gender with t
 select first_name, gender, count(*) from employees
 group by first_name, gender
 having first_name in ('Irena', 'Vidya', 'Maya');
+/*
+'Vidya', 'M', '151'
+'Irena', 'M', '144'
+'Irena', 'F', '97'
+'Maya', 'F', '90'
+'Vidya', 'F', '81'
+'Maya', 'M', '146'
+*/
 
 /* 8 
 Using your query that generates a username for all of the employees, generate a count employees 
 for each unique username. */
 select * from employees;
+
 select concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
 substr(birth_date, 3, 2) 
 ) as username, count(*)
 from employees
 group by username;
+
+select count(concat(substr(lower(first_name), 1, 1), substr(lower(last_name), 1, 4), '_', substr(birth_date, 6, 2), 
+substr(birth_date, 3, 2) 
+)) as distinct_usernames
+from employees
+;
+-- 300024 distinct usernames
+
 
 /* 9 From your previous query, are there any duplicate usernames? What is the higest number of 
 times a username shows up? Bonus: How many duplicate usernames are there from your previous query?
